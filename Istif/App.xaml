@@ -1,0 +1,82 @@
+<Application x:Class="Istif.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <!-- Renkler -->
+        <Color x:Key="LacivertRenk">#1D2B4D</Color>
+        <Color x:Key="ZeminRenk">#0F1830</Color>
+        <Color x:Key="VurguRenk">#3ABFF0</Color>
+        <SolidColorBrush x:Key="Lacivert" Color="{StaticResource LacivertRenk}" />
+        <SolidColorBrush x:Key="Zemin" Color="{StaticResource ZeminRenk}" />
+        <SolidColorBrush x:Key="Vurgu" Color="{StaticResource VurguRenk}" />
+        <SolidColorBrush x:Key="Gumus" Color="#C9CED6" />
+        <SolidColorBrush x:Key="GumusKoyu" Color="#8A929E" />
+
+        <FontFamily x:Key="BaslikYazi">Segoe UI Variable Display, Segoe UI</FontFamily>
+        <FontFamily x:Key="MetinYazi">Segoe UI Variable Text, Segoe UI</FontFamily>
+
+        <!-- Başlık düğmesi renkleri; temaya göre AnaPencere.xaml.cs değiştirir (Tema.cs) -->
+        <SolidColorBrush x:Key="BaslikDugmeYazi" Color="#C9CED6" />
+        <SolidColorBrush x:Key="BaslikDugmeYaziUstunde" Color="#FFFFFF" />
+        <SolidColorBrush x:Key="BaslikDugmeUstunde" Color="#1AFFFFFF" />
+        <SolidColorBrush x:Key="BaslikDugmeBasili" Color="#29FFFFFF" />
+
+        <!-- Başlık çubuğu düğmeleri -->
+        <Style x:Key="BaslikDugmesi" TargetType="Button">
+            <Setter Property="Width" Value="46" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Foreground" Value="{DynamicResource BaslikDugmeYazi}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Zemin" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Zemin" Property="Background" Value="{DynamicResource BaslikDugmeUstunde}" />
+                                <Setter Property="Foreground" Value="{DynamicResource BaslikDugmeYaziUstunde}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Zemin" Property="Background" Value="{DynamicResource BaslikDugmeBasili}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="KapatDugmesi" TargetType="Button" BasedOn="{StaticResource BaslikDugmesi}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Zemin" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Zemin" Property="Background" Value="#C42B1C" />
+                                <Setter Property="Foreground" Value="#FFFFFF" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Zemin" Property="Background" Value="#A82316" />
+                                <Setter Property="Foreground" Value="#FFFFFF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DugmeSimgesi" TargetType="Path">
+            <Setter Property="Stroke" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="UseLayoutRounding" Value="True" />
+        </Style>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issue / Güvenlik açığı
+    url: https://github.com/ceceys/istif/security/advisories/new
+    about: Report vulnerabilities privately, not in a public issue. / Güvenlik açıklarını herkese açık bir issue yerine gizli bildir.
+  - name: Download İstif / İstif'i indir
+    url: https://github.com/ceceys/istif/releases/latest/download/Istif-Setup.exe
+    about: Latest installer for Windows / Windows için son kurulum paketi

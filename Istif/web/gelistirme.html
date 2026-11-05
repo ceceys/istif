@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Yalnız geliştirme: index.html ile aynı arayüz, ek olarak js/gelistirme.js (?dene=...).
+       Bu dosya ve gelistirme.js derleme çıktısına ve dağıtıma girmez (Istif.csproj). -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'sha256-kaEog0AsPo4/9apXRMvp5eF3zpfBg9ltlJNNm2KUPio='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none';">
+  <meta name="color-scheme" content="dark">
+  <title></title>
+  <link rel="icon" href="img/simge-256.png">
+  <link rel="stylesheet" href="css/temel.css">
+  <link rel="stylesheet" href="css/ekranlar.css">
+  <link rel="stylesheet" href="css/plan.css">
+  <link rel="stylesheet" href="css/rapor.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","three/addons/":"./vendor/three/addons/"}}</script>
+  <script type="module" src="js/gelistirme.js"></script>
+  <script type="module" src="js/uygulama.js"></script>
+</head>
+<body class="bekliyor">
+</body>
+</html>

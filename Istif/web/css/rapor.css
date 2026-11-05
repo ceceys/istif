@@ -1,0 +1,160 @@
+/* PDF yükleme planı: ekranda gizli, yazdırmada yalnız rapor görünür. A4 yatay, açık zemin. */
+
+#rapor { display: none; }
+
+@media print {
+  /* Koyu tema sayfa kenarlarını da koyu boyamasın */
+  :root { color-scheme: light !important; }
+  html, body,
+  html.rapor-var,
+  html.rapor-var body {
+    height: auto;
+    overflow: visible;
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+  }
+  body { user-select: auto; }
+  body > *:not(#rapor) { display: none !important; }
+  html.rapor-var #rapor { display: block; }
+
+  .rapor {
+    color: #1A2238;
+    font: 9pt/1.4 "Segoe UI Variable Text", "Segoe UI", sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .rapor h1, .rapor h2, .rapor h3 { font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif; color: #1D2B4D; margin: 0; }
+  .rapor h2 { font-size: 12.5pt; margin: 5mm 0 2mm; }
+  .rapor h3 { font-size: 10pt; margin: 0 0 1.5mm; }
+  .rapor small { color: #6B7487; }
+
+  .r-sayfa + .r-sayfa { break-before: page; }
+
+  /* Üst bölüm */
+  .r-ust {
+    display: flex;
+    align-items: center;
+    gap: 4mm;
+    padding-bottom: 3mm;
+    border-bottom: 0.6mm solid #1D2B4D;
+  }
+  .r-simge { width: 11mm; height: 11mm; border-radius: 2.4mm; }
+  .r-ust-metin { flex: 1; }
+  .r-ust-metin h1 { font-size: 17pt; line-height: 1.15; }
+  .r-ust-metin p { margin: 0.5mm 0 0; color: #4A5468; }
+  .r-ust-urun { font: 600 10pt "Segoe UI Variable Display", "Segoe UI", sans-serif; color: #1E9FD3; letter-spacing: 0.04em; }
+
+  .r-kutular {
+    display: grid;
+    grid-template-columns: 1.2fr 1.6fr 0.8fr 1fr 1fr;
+    gap: 2.5mm;
+    margin-top: 4mm;
+  }
+  .r-kutular > div {
+    display: grid;
+    gap: 0.6mm;
+    padding: 2.6mm 3.2mm;
+    border-radius: 2mm;
+    background: #F2F5FA;
+    border: 0.25mm solid #DCE3EE;
+  }
+  .r-kutular span { font-size: 7.5pt; color: #5B6477; text-transform: uppercase; letter-spacing: 0.04em; }
+  .r-kutular b { font-size: 12pt; color: #1D2B4D; font-variant-numeric: tabular-nums; }
+
+  /* Tablolar */
+  .r-tablo { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .r-tablo thead { display: table-header-group; }
+  .r-tablo tr { break-inside: avoid; }
+  .r-tablo th {
+    text-align: left;
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+    background: #1D2B4D;
+    padding: 1.6mm 2.4mm;
+  }
+  .r-tablo td { padding: 1.5mm 2.4mm; border-bottom: 0.25mm solid #DCE3EE; vertical-align: middle; }
+  .r-tablo tbody tr:nth-child(even) td { background: #F6F8FB; }
+  .r-tablo .sag { text-align: right; }
+  .r-tablo small { margin-left: 1.5mm; }
+  .r-nokta {
+    display: inline-block;
+    width: 2.6mm;
+    height: 2.6mm;
+    border-radius: 0.7mm;
+    margin-right: 2mm;
+    vertical-align: -0.3mm;
+    box-shadow: inset 0 0 0 0.2mm rgba(0, 0, 0, 0.25);
+  }
+  .r-sira { color: #5B6477; font-weight: 600; width: 1%; }
+
+  /* Uyarılar ve sığmayanlar */
+  .r-iki { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-top: 4mm; }
+  .r-kutu { padding: 2.6mm 3.4mm; border-radius: 2mm; border: 0.25mm solid #DCE3EE; border-left-width: 1.2mm; }
+  .r-kutu ul { margin: 0; padding-left: 4mm; }
+  .r-kutu li { margin: 0.6mm 0; }
+  .r-kutu p { margin: 0; color: #4A5468; }
+  .r-kutu--uyari { border-left-color: #E2A23B; background: #FFF9EE; }
+  .r-kutu--hata { border-left-color: #D9505C; background: #FFF3F4; }
+  .r-kutu--tamam { border-left-color: #2DAE7A; background: #F0FAF5; }
+
+  /* Araç sayfaları */
+  .r-arac-ust { display: flex; align-items: baseline; justify-content: space-between; gap: 6mm; padding-bottom: 2mm; border-bottom: 0.6mm solid #1D2B4D; }
+  .r-arac-ust h2 { margin: 0; font-size: 14pt; }
+  .r-arac-ust p { margin: 0; color: #4A5468; }
+
+  .r-gorseller {
+    display: grid;
+    grid-template-columns: 1.75fr 1fr;
+    gap: 3mm;
+    margin-top: 3mm;
+    break-inside: avoid;
+  }
+  .r-gorsel-kucukler { display: grid; grid-template-rows: 1fr 1fr; gap: 3mm; }
+  .r-gorsel {
+    position: relative;
+    margin: 0;
+    border-radius: 2mm;
+    border: 0.25mm solid #DCE3EE;
+    overflow: hidden;
+    background: #FFFFFF;
+  }
+  .r-gorsel img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .r-gorsel--buyuk { height: 88mm; }
+  .r-gorsel-kucukler .r-gorsel { height: 42.5mm; }
+  .r-gorsel figcaption {
+    position: absolute;
+    left: 2mm;
+    top: 1.6mm;
+    font-size: 7pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #1D2B4D;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.4mm 1.6mm;
+    border-radius: 1mm;
+  }
+  .r-gorsel-yok { display: grid; place-items: center; color: #8A929E; background: #F6F8FB; }
+  .r-sira-baslik { margin-top: 4mm !important; }
+
+  /* Elle düzenleme: işaret, hata notu, kalan boşluk */
+  .r-elle { color: #9A6200; font-weight: 600; }
+  .r-hata-notu {
+    margin-top: 3mm;
+    padding: 2mm 3.4mm;
+    border-radius: 2mm;
+    border: 0.25mm solid #F0B9BF;
+    border-left: 1.2mm solid #D9505C;
+    background: #FFF3F4;
+    color: #8E1F2B;
+    font-weight: 600;
+  }
+  .r-kutu li.r-hata { color: #8E1F2B; }
+  .r-aciklama { margin: -1mm 0 2mm; color: #5B6477; font-size: 8pt; }
+  .r-bosluk td.sag, .r-bosluk th.sag { width: 15%; }
+  .r-eksi { color: #C0303D; font-weight: 600; }
+  .r-arac-bosluk { margin: 1.6mm 0 0; color: #1D2B4D; font-weight: 600; font-variant-numeric: tabular-nums; }
+}

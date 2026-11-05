@@ -1,0 +1,74 @@
+{
+  "araclar": [
+    {
+      "no": 1,
+      "ad": "Standart Tır",
+      "en": 2500,
+      "yukseklik": 2800,
+      "uzunluk": 13600,
+      "kapiPayiMm": 0,
+      "maksAgirlik": 24000,
+      "toplamAgirlik": 2565,
+      "hacimDoluluk": 31.3,
+      "kullanilanUzunluk": 13100,
+      "agirlikMerkezi": { "x": 1250, "y": 719, "z": 6707 },
+      "aksYukleri": { "sasi": 1210, "aks": 1355 },
+      "uyarilar": [],
+      "yerlesimler": [
+        { "sira": 1, "kalemId": "k2", "parcaNo": 1, "ad": "İlaçlama makinesi 1/3", "renk": "#3ABFF0",
+          "x": 450, "y": 0, "z": 0, "en": 1600, "yukseklik": 1450, "uzunluk": 3450,
+          "donduruldu": false, "ustte": false, "agirlik": 655 },
+        { "sira": 2, "kalemId": "k2", "parcaNo": 2, "ad": "İlaçlama makinesi 2/3", "renk": "#3ABFF0",
+          "x": 450, "y": 0, "z": 3450, "en": 1600, "yukseklik": 1450, "uzunluk": 3450,
+          "donduruldu": false, "ustte": false, "agirlik": 655 },
+        { "sira": 3, "kalemId": "k2", "parcaNo": 3, "ad": "İlaçlama makinesi 3/3", "renk": "#3ABFF0",
+          "x": 450, "y": 0, "z": 6900, "en": 1600, "yukseklik": 1450, "uzunluk": 3450,
+          "donduruldu": false, "ustte": false, "agirlik": 655 },
+        { "sira": 4, "kalemId": "k1", "parcaNo": 1, "ad": "Gübre makinesi", "renk": "#F2B441",
+          "x": 500, "y": 0, "z": 10350, "en": 1500, "yukseklik": 1400, "uzunluk": 2750,
+          "donduruldu": false, "ustte": false, "agirlik": 600 }
+      ]
+    },
+    {
+      "no": 2,
+      "ad": "Standart Tır",
+      "en": 2500,
+      "yukseklik": 2800,
+      "uzunluk": 13600,
+      "kapiPayiMm": 0,
+      "maksAgirlik": 24000,
+      "toplamAgirlik": 2748,
+      "hacimDoluluk": 14.9,
+      "kullanilanUzunluk": 8200,
+      "agirlikMerkezi": { "x": 1250, "y": 412, "z": 4144 },
+      "aksYukleri": { "sasi": 1948, "aks": 800 },
+      "uyarilar": ["Ağırlık merkezi ortadan 2,66 m önde."],
+      "yerlesimler": [
+        { "sira": 1, "kalemId": "k3", "parcaNo": 1, "ad": "Çapa makinesi 1/2", "renk": "#35C48A",
+          "x": 150, "y": 0, "z": 0, "en": 1100, "yukseklik": 1300, "uzunluk": 2200,
+          "donduruldu": false, "ustte": false, "agirlik": 354 },
+        { "sira": 2, "kalemId": "k3", "parcaNo": 2, "ad": "Çapa makinesi 2/2", "renk": "#35C48A",
+          "x": 1250, "y": 0, "z": 0, "en": 1100, "yukseklik": 1300, "uzunluk": 2200,
+          "donduruldu": false, "ustte": false, "agirlik": 354 },
+        { "sira": 3, "kalemId": "k4", "parcaNo": 1, "ad": "Diskaro 1/3", "renk": "#9D8CF2",
+          "x": 250, "y": 0, "z": 2200, "en": 2000, "yukseklik": 660, "uzunluk": 2000,
+          "donduruldu": false, "ustte": false, "agirlik": 680 },
+        { "sira": 4, "kalemId": "k4", "parcaNo": 2, "ad": "Diskaro 2/3", "renk": "#9D8CF2",
+          "x": 250, "y": 0, "z": 4200, "en": 2000, "yukseklik": 660, "uzunluk": 2000,
+          "donduruldu": false, "ustte": false, "agirlik": 680 },
+        { "sira": 5, "kalemId": "k4", "parcaNo": 3, "ad": "Diskaro 3/3", "renk": "#9D8CF2",
+          "x": 250, "y": 0, "z": 6200, "en": 2000, "yukseklik": 660, "uzunluk": 2000,
+          "donduruldu": false, "ustte": false, "agirlik": 680 }
+      ]
+    }
+  ],
+  "sigmayanlar": [],
+  "ozet": {
+    "aracSayisi": 2,
+    "toplamParca": 9,
+    "yerlesen": 9,
+    "toplamAgirlik": 5313,
+    "sureMs": 0,
+    "strateji": "Elle yazılmış örnek sonuç (arayüz denemesi)"
+  }
+}

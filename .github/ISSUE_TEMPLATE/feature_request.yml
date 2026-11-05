@@ -1,0 +1,19 @@
+name: Feature request / Özellik önerisi
+description: Suggest an idea for İstif / İstif için bir fikir öner
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would you like to do? / Ne yapmak istiyorsun?
+      description: Describe the load, the vehicle and what is missing. / Yükü, aracı ve eksik olanı anlat.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: How could İstif help? / İstif nasıl yardımcı olabilir?
+  - type: textarea
+    id: other
+    attributes:
+      label: Anything else? / Eklemek istediğin bir şey var mı?

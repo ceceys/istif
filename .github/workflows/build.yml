@@ -1,0 +1,112 @@
+name: Build
+
+# Builds on every push and pull request. A "v*" tag (e.g. v1.1.0) also creates the GitHub release with:
+#   Istif-Setup-<version>.exe  installer (the in-app updater installs this when İstif was installed)
+#   Istif-Setup.exe            same installer under a stable name for the README download link
+#   Istif.exe                  portable single file (the in-app updater replaces a portable copy with this)
+#   SHA256SUMS.txt             checksums; the in-app updater refuses files that are not listed or do not match
+# setup/yayinla.ps1 produces the same files locally.
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Version check (tag, Istif.csproj and web/js/urun.js must agree)
+        run: |
+          [xml] $xml = Get-Content Istif/Istif.csproj -Encoding UTF8
+          $version = @($xml.Project.PropertyGroup | ForEach-Object { $_.Version } | Where-Object { $_ })[0]
+          if (-not $version) { throw "No <Version> in Istif/Istif.csproj" }
+          $urun = Get-Content Istif/web/js/urun.js -Raw -Encoding UTF8
+          if ($urun -notmatch "surum:\s*'$([regex]::Escape($version))'") { throw "web/js/urun.js version is not $version" }
+          if ("${{ github.ref_type }}" -eq "tag") {
+            $tag = "${{ github.ref_name }}".TrimStart("v")
+            if ($tag -ne $version) { throw "Tag $tag does not match the project version $version" }
+          }
+          "VERSION=$version" >> $env:GITHUB_ENV
+          "Version $version"
+
+      - name: Engine tests
+        run: |
+          node --version
+          node testler/motor.test.mjs
+
+      - name: Build (warnings are errors)
+        run: dotnet build Istif/Istif.csproj -c Release -warnaserror
+
+      - name: Publish for the installer (framework-dependent, multiple files)
+        run: dotnet publish Istif/Istif.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=false -p:DebugType=none -o publish/kurulum
+
+      - name: Publish portable (framework-dependent single exe)
+        run: dotnet publish Istif/Istif.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:IncludeNativeLibrariesForSelfExtract=true -p:DebugType=none -o publish/tasinabilir
+
+      - name: Development files must not ship
+        run: |
+          $dev = Get-ChildItem publish/kurulum -Recurse -File | Where-Object { $_.Name -like "gelistirme*" }
+          if ($dev) { throw "Development files in the output: $($dev.FullName -join ', ')" }
+
+      - name: Build installer (Inno Setup)
+        run: |
+          $iscc = Get-Command iscc -ErrorAction SilentlyContinue
+          if ($iscc) { $iscc = $iscc.Source }
+          elseif (Test-Path "C:\Program Files (x86)\Inno Setup 6\ISCC.exe") { $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" }
+          else { choco install innosetup --no-progress -y; $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" }
+          New-Item -ItemType Directory -Force dist | Out-Null
+          & $iscc /Q "/DAppVersion=$env:VERSION" "/DKaynak=$((Resolve-Path publish/kurulum).Path)" "/O$((Resolve-Path dist).Path)" Istif/setup/Istif.iss
+          if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed ($LASTEXITCODE)" }
+
+      - name: Release file names
+        run: |
+          Copy-Item "dist/Istif-Setup-$env:VERSION.exe" dist/Istif-Setup.exe
+          Copy-Item publish/tasinabilir/Istif.exe dist/Istif.exe
+          Get-ChildItem dist
+
+      - name: Checksums (the app verifies downloads against this file)
+        run: |
+          $lines = foreach ($f in Get-ChildItem dist/*.exe | Sort-Object Name) {
+            "{0}  {1}" -f (Get-FileHash $f.FullName -Algorithm SHA256).Hash.ToLower(), $f.Name
+          }
+          [IO.File]::WriteAllText("$PWD/dist/SHA256SUMS.txt", (($lines -join "`n") + "`n"))
+          Get-Content dist/SHA256SUMS.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: Istif
+          path: |
+            dist/*.exe
+            dist/SHA256SUMS.txt
+
+      # Keep the description to one short line. The in-app update window shows the localized notes from
+      # Istif/Resources/Notes.<lang>.md at the release tag; the description is only a fallback. Full notes: CHANGELOG.md.
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v3
+        with:
+          name: İstif ${{ env.VERSION }}
+          files: |
+            dist/Istif-Setup-*.exe
+            dist/Istif-Setup.exe
+            dist/Istif.exe
+            dist/SHA256SUMS.txt
+          body: "What's new: https://github.com/ceceys/istif/blob/main/CHANGELOG.md"
+          generate_release_notes: false

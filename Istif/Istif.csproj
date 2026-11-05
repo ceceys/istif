@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\uygulama.ico</ApplicationIcon>
+
+    <!-- Ürün adı yalnız burada yazılır. Kod adı ve sürümü derlemeden okur. -->
+    <AssemblyName>Istif</AssemblyName>
+    <RootNamespace>Istif</RootNamespace>
+    <Product>İstif</Product>
+    <AssemblyTitle>$(Product) Yükleme Planlayıcı</AssemblyTitle>
+    <Description>Tır, kamyon ve konteyner için 3B yükleme planlayıcı</Description>
+    <Authors>Cuma Ali Dirik</Authors>
+    <Copyright>Copyright (c) 2026 Cuma Ali Dirik</Copyright>
+    <Version>1.0.0</Version>
+
+    <SatelliteResourceLanguages>tr</SatelliteResourceLanguages>
+    <!-- Geri yükleme sırasında nuget.org'a güvenlik açığı sorgusu gitmesin; paketler yerel önbellekten gelir. -->
+    <NuGetAudit>false</NuGetAudit>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <!-- Paketlerin XML belge dosyaları çıktıya ve dağıtıma kopyalanmasın -->
+    <AllowedReferenceRelatedFileExtensions>.pdb</AllowedReferenceRelatedFileExtensions>
+    <!-- setup\yayinla.ps1'in ara çıktısı proje öğesi sayılmasın -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);publish\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WPF projelerinde System.IO örtük gelmez (Shapes.Path ile çakışmasın diye); dosyalar Path'i System.IO'dan kullanır. -->
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Yerel NuGet önbelleğindeki sürüm; internetsiz geri yüklenir. -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Kabuk metinleri ve sürüm notları derlemeye gömülür. WithCulture=false: "Strings.tr.json" uydu
+         derlemeye ayrılmasın, ana derlemede kalsın. Kod adları: Istif.Resources.Strings.tr.json, Istif.Resources.Notes.tr.md -->
+    <EmbeddedResource Include="Resources\Strings.*.json" WithCulture="false" LogicalName="Istif.Resources.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="Resources\Notes.*.md" WithCulture="false" LogicalName="Istif.Resources.%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\uygulama.ico" />
+    <!-- Açılış ekranı ve başlık çubuğu aynı simgeyi kullanır. -->
+    <Resource Include="web\img\simge-256.png" Link="Assets\simge-256.png" />
+    <!-- Arayüz dosyaları çıktıya olduğu gibi kopyalanır. -->
+    <None Update="web\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Geliştirme sayfası (?dene=...) çıktıya ve dağıtıma girmez; tarayıcıda kaynak klasörden açılır. -->
+    <None Update="web\gelistirme.html;web\js\gelistirme.js" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+    <!-- Elle düzenleme deneme senaryosu (duzenle-dene bayrağı): yalnız Debug çıktısına girer, hiçbir zaman dağıtıma girmez. -->
+    <None Update="web\js\gelistirme-duzenle.js" CopyToPublishDirectory="Never" />
+    <None Update="web\js\gelistirme-duzenle.js" CopyToOutputDirectory="Never" Condition="'$(Configuration)' != 'Debug'" />
+  </ItemGroup>
+
+</Project>

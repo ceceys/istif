@@ -1,0 +1,31 @@
+name: Stable download link
+
+# Manual: copies the latest release's Istif-Setup-x.y.z.exe as Istif-Setup.exe, so
+# https://github.com/ceceys/istif/releases/latest/download/Istif-Setup.exe always works.
+# New tag builds add this file themselves (see build.yml); this is for releases made without it.
+# SHA256SUMS.txt is updated too, because the in-app updater only installs listed files.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Istif-Setup.exe to the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName)
+          gh release download "$tag" --repo "$GITHUB_REPOSITORY" -p 'Istif-Setup-*.exe' -p 'SHA256SUMS.txt' -D dl
+          setup=$(ls dl/Istif-Setup-*.exe | head -n 1)
+          cp "$setup" Istif-Setup.exe
+          hash=$(sha256sum Istif-Setup.exe | cut -d' ' -f1)
+          touch dl/SHA256SUMS.txt
+          grep -v '  Istif-Setup.exe$' dl/SHA256SUMS.txt > SHA256SUMS.txt || true
+          echo "$hash  Istif-Setup.exe" >> SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          gh release upload "$tag" Istif-Setup.exe SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --clobber

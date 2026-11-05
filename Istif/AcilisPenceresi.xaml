@@ -1,0 +1,141 @@
+<Window x:Class="Istif.AcilisPenceresi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="608" Height="368"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="True" Icon="/Assets/uygulama.ico"
+        UseLayoutRounding="True">
+
+    <!-- Gölge için 24 px pay bırakılır -->
+    <Grid x:Name="Kap" Margin="24" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <ScaleTransform x:Name="KapOlcek" ScaleX="1" ScaleY="1" />
+        </Grid.RenderTransform>
+
+        <!-- Renkler koyu temaya göre yazılıdır; açık temada AcilisPenceresi.xaml.cs değiştirir -->
+        <Border x:Name="GolgeZemin" CornerRadius="16" Background="#0F1830">
+            <Border.Effect>
+                <DropShadowEffect x:Name="Golge" BlurRadius="30" ShadowDepth="8" Direction="270" Opacity="0.55" Color="#020611" />
+            </Border.Effect>
+        </Border>
+
+        <Border x:Name="Cerceve" CornerRadius="16" BorderThickness="1" BorderBrush="#2E3F68" ClipToBounds="True">
+            <Border.Background>
+                <RadialGradientBrush Center="0.32,0.3" GradientOrigin="0.32,0.3" RadiusX="0.95" RadiusY="1.15">
+                    <GradientStop x:Name="Zemin1" Color="#23365F" Offset="0" />
+                    <GradientStop x:Name="Zemin2" Color="#182649" Offset="0.5" />
+                    <GradientStop x:Name="Zemin3" Color="#0F1830" Offset="1" />
+                </RadialGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <!-- Soluk ızgara, kenarlara doğru kaybolur -->
+                <Rectangle Opacity="0.08">
+                    <Rectangle.Fill>
+                        <DrawingBrush TileMode="Tile" Viewport="0,0,28,28" ViewportUnits="Absolute">
+                            <DrawingBrush.Drawing>
+                                <GeometryDrawing Geometry="M0,0 L28,0 M0,0 L0,28">
+                                    <GeometryDrawing.Pen>
+                                        <Pen x:Name="IzgaraKalem" Brush="#C9CED6" Thickness="0.6" />
+                                    </GeometryDrawing.Pen>
+                                </GeometryDrawing>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                    <Rectangle.OpacityMask>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF000000" Offset="0" />
+                            <GradientStop Color="#00000000" Offset="1" />
+                        </RadialGradientBrush>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+
+                <!-- Üst kenarda ince camgöbeği ışık -->
+                <Rectangle Height="1" VerticalAlignment="Top" Margin="60,0" Opacity="0.7">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#003ABFF0" Offset="0" />
+                            <GradientStop Color="#FF3ABFF0" Offset="0.5" />
+                            <GradientStop Color="#003ABFF0" Offset="1" />
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-6,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <!-- Simge ve üzerinden geçen ışık -->
+                        <Grid x:Name="Simge" Width="96" Height="96" Opacity="0" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <ScaleTransform x:Name="SimgeOlcek" ScaleX="0.78" ScaleY="0.78" />
+                            </Grid.RenderTransform>
+                            <Image Source="/Assets/simge-256.png" RenderOptions.BitmapScalingMode="HighQuality" />
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TranslateTransform x:Name="SimgeIsik" X="-1.3" Y="-1.3" />
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="#00FFFFFF" Offset="0.36" />
+                                        <GradientStop Color="#99FFFFFF" Offset="0.5" />
+                                        <GradientStop Color="#00FFFFFF" Offset="0.64" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="/Assets/simge-256.png" Stretch="Uniform" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </Grid>
+
+                        <StackPanel x:Name="Yazilar" VerticalAlignment="Center" Margin="22,0,0,6" Opacity="0">
+                            <StackPanel.RenderTransform>
+                                <TranslateTransform x:Name="YaziKaydir" X="-10" />
+                            </StackPanel.RenderTransform>
+                            <TextBlock x:Name="UrunAdi" FontFamily="{StaticResource BaslikYazi}" FontSize="46"
+                                       FontWeight="SemiBold" TextOptions.TextFormattingMode="Ideal">
+                                <TextBlock.Foreground>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.2">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TranslateTransform x:Name="YaziIsik" X="-1.2" />
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop x:Name="Yazi1" Color="#DCE1E8" Offset="0" />
+                                        <GradientStop x:Name="Yazi2" Color="#DCE1E8" Offset="0.38" />
+                                        <GradientStop x:Name="YaziIsikRengi" Color="#FFFFFF" Offset="0.5" />
+                                        <GradientStop x:Name="Yazi3" Color="#DCE1E8" Offset="0.62" />
+                                        <GradientStop x:Name="Yazi4" Color="#DCE1E8" Offset="1" />
+                                    </LinearGradientBrush>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <TextBlock x:Name="AltBaslik" FontFamily="{StaticResource MetinYazi}" FontSize="15.5"
+                                       Foreground="#AEB5C1" Margin="2,-2,0,0" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- İlerleme çizgisi -->
+                    <Grid Width="280" Height="2" Margin="0,42,0,0">
+                        <Border x:Name="IlerlemeIz" Background="#1FFFFFFF" CornerRadius="1" />
+                        <Border CornerRadius="1" RenderTransformOrigin="0,0.5">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#2AA8DB" Offset="0" />
+                                    <GradientStop Color="#3ABFF0" Offset="0.7" />
+                                    <GradientStop Color="#8EDCF8" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="IlerlemeOlcek" ScaleX="0" />
+                            </Border.RenderTransform>
+                            <Border.Effect>
+                                <DropShadowEffect Color="#3ABFF0" BlurRadius="10" ShadowDepth="0" Opacity="0.9" />
+                            </Border.Effect>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+
+                <TextBlock x:Name="SurumYazi" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                           Margin="0,0,18,14" FontSize="11" Foreground="#5F6B80"
+                           FontFamily="{StaticResource MetinYazi}" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

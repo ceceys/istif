@@ -1,0 +1,63 @@
+name: Bug report / Hata bildirimi
+description: Something does not work as expected / Bir şey beklendiği gibi çalışmıyor
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report. You can write in English or Turkish.
+        Bildirdiğin için teşekkürler. İngilizce ya da Türkçe yazabilirsin.
+  - type: input
+    id: version
+    attributes:
+      label: İstif version / İstif sürümü
+      description: About screen / Hakkında ekranı
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: Installed with / Kurulum şekli
+      options:
+        - Installer (Istif-Setup.exe) / Kurulum paketi
+        - Portable (Istif.exe) / Taşınabilir
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version / Windows sürümü
+      description: Win+R → winver
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened? / Ne oldu?
+      description: What did you expect and what happened instead? / Ne bekliyordun, ne oldu?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Nasıl tekrarlanır?
+      description: If possible, describe the vehicle and the load (sizes, weights, rules). / Mümkünse aracı ve yükü (ölçü, ağırlık, kurallar) yaz.
+      placeholder: |
+        1.
+        2.
+        3.
+  - type: textarea
+    id: log
+    attributes:
+      label: Log / Günlük
+      description: |
+        Paste the last lines of %LOCALAPPDATA%\Istif\gunluk.txt. It holds error messages and may contain file paths; remove anything private.
+        %LOCALAPPDATA%\Istif\gunluk.txt dosyasının son satırlarını yapıştır. Hata iletileri içerir, dosya yolları geçebilir; özel bilgileri sil.
+      render: text
+  - type: markdown
+    attributes:
+      value: |
+        Please do not attach plans or screenshots that contain confidential customer data.
+        Lütfen gizli müşteri bilgisi içeren plan ya da ekran görüntüsü ekleme.
