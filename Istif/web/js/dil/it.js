@@ -271,7 +271,7 @@ export default {
   'plan.hata.motorHata': 'Il motore di calcolo ha segnalato un errore.',
   'plan.hata.zamanAsimi': 'Il calcolo ha richiesto troppo tempo ed è stato interrotto.',
   'plan.hata.gecersizSonuc': 'Il motore di calcolo ha restituito un risultato imprevisto.',
-  'plan.hata.ornekYok': 'Impossibile aprire il file del risultato di esempio (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'Impossibile aprire il file del risultato di esempio (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Modifiche non salvate',
   'plan.degisiklik.metin': 'Le modifiche al piano aperto non sono state salvate. Andranno perse se continui.',
   'plan.degisiklik.devam': 'Continua senza salvare',

@@ -271,7 +271,7 @@ export default {
   'plan.hata.motorHata': 'El motor de cálculo notificó un error.',
   'plan.hata.zamanAsimi': 'El cálculo tardó demasiado y se detuvo.',
   'plan.hata.gecersizSonuc': 'El motor de cálculo devolvió un resultado inesperado.',
-  'plan.hata.ornekYok': 'No se pudo abrir el archivo del resultado de ejemplo (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'No se pudo abrir el archivo del resultado de ejemplo (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Cambios sin guardar',
   'plan.degisiklik.metin': 'Los cambios del plan abierto no se han guardado. Se perderán si continúa.',
   'plan.degisiklik.devam': 'Continuar sin guardar',

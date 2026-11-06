@@ -267,7 +267,7 @@ export default {
   'plan.hata.motorHata': '计算引擎报告了错误。',
   'plan.hata.zamanAsimi': '计算耗时过长，已停止。',
   'plan.hata.gecersizSonuc': '计算引擎返回了意外的结果。',
-  'plan.hata.ornekYok': '无法打开示例结果文件（arayuz-ornek/ornek-sonuc.json）。',
+  'plan.hata.ornekYok': '无法打开示例结果文件（testler/ornek-sonuc.json）。',
   'plan.degisiklik.baslik': '有未保存的更改',
   'plan.degisiklik.metin': '当前方案的更改尚未保存。继续将丢失这些更改。',
   'plan.degisiklik.devam': '不保存并继续',

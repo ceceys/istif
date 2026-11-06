@@ -271,7 +271,7 @@ export default {
   'plan.hata.motorHata': 'Le moteur de calcul a signalé une erreur.',
   'plan.hata.zamanAsimi': 'Le calcul a pris trop de temps et a été arrêté.',
   'plan.hata.gecersizSonuc': 'Le moteur de calcul a renvoyé un résultat inattendu.',
-  'plan.hata.ornekYok': 'Le fichier de résultat d’exemple n’a pas pu être ouvert (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'Le fichier de résultat d’exemple n’a pas pu être ouvert (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Modifications non enregistrées',
   'plan.degisiklik.metin': 'Les modifications du plan ouvert n’ont pas été enregistrées. Elles seront perdues si vous continuez.',
   'plan.degisiklik.devam': 'Continuer sans enregistrer',

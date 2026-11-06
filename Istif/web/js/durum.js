@@ -20,7 +20,7 @@ export const durum = {
   sistemDili: 'en',
   /** Kabuktan: kurulu mu, veri klasörü */
   surumBilgisi: { kurulu: false, veriKlasoru: null, tarayici: true },
-  /** ?ornek=1: motor yerine arayuz-ornek/ornek-sonuc.json kullanılır (geliştirme) */
+  /** ?ornek=1: motor yerine testler/ornek-sonuc.json kullanılır (geliştirme) */
   gelistirme: parametreler.get('ornek') === '1',
 };
 

@@ -279,7 +279,7 @@ export default {
   'plan.hata.motorHata': 'Модуль расчёта сообщил об ошибке.',
   'plan.hata.zamanAsimi': 'Расчёт занял слишком много времени и был остановлен.',
   'plan.hata.gecersizSonuc': 'Модуль расчёта вернул неожиданный результат.',
-  'plan.hata.ornekYok': 'Не удалось открыть файл с примером результата (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'Не удалось открыть файл с примером результата (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Несохранённые изменения',
   'plan.degisiklik.metin': 'Изменения в открытом плане не сохранены. Если продолжить, они будут потеряны.',
   'plan.degisiklik.devam': 'Продолжить без сохранения',

@@ -271,7 +271,7 @@ export default {
   'plan.hata.motorHata': 'O mecanismo de cálculo informou um erro.',
   'plan.hata.zamanAsimi': 'O cálculo demorou demais e foi interrompido.',
   'plan.hata.gecersizSonuc': 'O mecanismo de cálculo retornou um resultado inesperado.',
-  'plan.hata.ornekYok': 'Não foi possível abrir o arquivo do resultado de exemplo (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'Não foi possível abrir o arquivo do resultado de exemplo (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Alterações não salvas',
   'plan.degisiklik.metin': 'As alterações no plano aberto não foram salvas. Elas serão perdidas se você continuar.',
   'plan.degisiklik.devam': 'Continuar sem salvar',

@@ -1,6 +1,6 @@
 // Motor bağlantısı. Motor yalnız js/motor/isci.js Web Worker'ı üzerinden çağrılır.
 // Worker yoksa ya da hata verirse arayüz çökmez; anlaşılır bir hata döner.
-// ?ornek=1 ile açılınca motor yerine Kaynak/arayuz-ornek/ornek-sonuc.json kullanılır.
+// ?ornek=1 ile açılınca motor yerine Kaynak/testler/ornek-sonuc.json kullanılır.
 import { t } from './dil.js';
 import { durum } from './durum.js';
 import { motorMetni } from './motor-metin.js';
@@ -151,9 +151,9 @@ export const yaslan = (arac, yerlesimler, indeksler, yon) => motorIstegi('yaslan
 /** Seçili parçaların üstündeki parçaların indeksleri */
 export const ustundekiler = (yerlesimler, indeksler) => motorIstegi('ustundekiler', { yerlesimler, indeksler });
 
-/** Geliştirme: elle yazılmış örnek sonuç (Kaynak/arayuz-ornek/ornek-sonuc.json) */
+/** Geliştirme: elle yazılmış örnek sonuç (Kaynak/testler/ornek-sonuc.json) */
 async function ornekSonuc(ilerleme) {
-  const adres = new URL('../../../arayuz-ornek/ornek-sonuc.json', import.meta.url);
+  const adres = new URL('../../../testler/ornek-sonuc.json', import.meta.url);
   for (let y = 0; y <= 100; y += 20) {
     if (ilerleme) ilerleme(y);
     await new Promise((r) => setTimeout(r, 90));

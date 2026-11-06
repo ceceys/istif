@@ -267,7 +267,7 @@ export default {
   'plan.hata.motorHata': '計算エンジンがエラーを報告しました。',
   'plan.hata.zamanAsimi': '計算に時間がかかりすぎたため、停止しました。',
   'plan.hata.gecersizSonuc': '計算エンジンが予期しない結果を返しました。',
-  'plan.hata.ornekYok': '結果の例のファイルを開けませんでした（arayuz-ornek/ornek-sonuc.json）。',
+  'plan.hata.ornekYok': '結果の例のファイルを開けませんでした（testler/ornek-sonuc.json）。',
   'plan.degisiklik.baslik': '未保存の変更',
   'plan.degisiklik.metin': '開いているプランの変更が保存されていません。続行すると失われます。',
   'plan.degisiklik.devam': '保存せずに続行',

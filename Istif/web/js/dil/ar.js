@@ -287,7 +287,7 @@ export default {
   'plan.hata.motorHata': 'أبلغ محرك الحساب عن خطأ.',
   'plan.hata.zamanAsimi': 'استغرق الحساب وقتًا طويلًا فتم إيقافه.',
   'plan.hata.gecersizSonuc': 'أعاد محرك الحساب نتيجة غير متوقعة.',
-  'plan.hata.ornekYok': 'تعذّر فتح ملف نتيجة المثال (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'تعذّر فتح ملف نتيجة المثال (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'تغييرات غير محفوظة',
   'plan.degisiklik.metin': 'لم تُحفظ التغييرات على الخطة المفتوحة. ستضيع إذا تابعت.',
   'plan.degisiklik.devam': 'المتابعة دون حفظ',

@@ -331,7 +331,7 @@ export default {
   'plan.hata.motorHata': 'Hesaplama motoru bir hata bildirdi.',
   'plan.hata.zamanAsimi': 'Hesaplama çok uzun sürdü ve durduruldu.',
   'plan.hata.gecersizSonuc': 'Hesaplama motoru beklenmeyen bir sonuç döndürdü.',
-  'plan.hata.ornekYok': 'Örnek sonuç dosyası açılamadı (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'Örnek sonuç dosyası açılamadı (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Kaydedilmemiş değişiklikler',
   'plan.degisiklik.metin': 'Açık plandaki değişiklikler kaydedilmedi. Devam ederseniz kaybolur.',
   'plan.degisiklik.devam': 'Kaydetmeden devam et',

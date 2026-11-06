@@ -267,7 +267,7 @@ export default {
   'plan.hata.motorHata': '계산 엔진에서 오류가 보고되었습니다.',
   'plan.hata.zamanAsimi': '계산이 너무 오래 걸려 중단되었습니다.',
   'plan.hata.gecersizSonuc': '계산 엔진이 예기치 않은 결과를 반환했습니다.',
-  'plan.hata.ornekYok': '예시 결과 파일을 열 수 없습니다 (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': '예시 결과 파일을 열 수 없습니다 (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': '저장되지 않은 변경 사항',
   'plan.degisiklik.metin': '열려 있는 계획의 변경 사항이 저장되지 않았습니다. 계속하면 변경 사항이 사라집니다.',
   'plan.degisiklik.devam': '저장하지 않고 계속',

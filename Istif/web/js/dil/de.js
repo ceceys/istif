@@ -271,7 +271,7 @@ export default {
   'plan.hata.motorHata': 'Die Berechnungs-Engine hat einen Fehler gemeldet.',
   'plan.hata.zamanAsimi': 'Die Berechnung hat zu lange gedauert und wurde abgebrochen.',
   'plan.hata.gecersizSonuc': 'Die Berechnungs-Engine hat ein unerwartetes Ergebnis geliefert.',
-  'plan.hata.ornekYok': 'Die Beispielergebnis-Datei konnte nicht geöffnet werden (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'Die Beispielergebnis-Datei konnte nicht geöffnet werden (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Nicht gespeicherte Änderungen',
   'plan.degisiklik.metin': 'Änderungen am geöffneten Plan wurden nicht gespeichert. Sie gehen verloren, wenn Sie fortfahren.',
   'plan.degisiklik.devam': 'Ohne Speichern fortfahren',

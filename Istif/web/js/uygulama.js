@@ -141,12 +141,12 @@ function birakmaKur() {
 
 /**
  * Geliştirme kipi (?ornek=1, yalnız tarayıcıda): son planlar listesi boşsa örnek yükten iki plan yazılır.
- * İlki arayuz-ornek/ornek-sonuc.json sonucunu taşır, ikincisi 40' HC konteynerde sonuçsuz plandır.
+ * İlki testler/ornek-sonuc.json sonucunu taşır, ikincisi 40' HC konteynerde sonuçsuz plandır.
  */
 async function gelistirmeTohumu() {
   const ilk = yeniPlanNesnesi(ornekPlanVerisi());
   try {
-    const yanit = await fetch(new URL('../../../arayuz-ornek/ornek-sonuc.json', import.meta.url), { cache: 'no-store' });
+    const yanit = await fetch(new URL('../../../testler/ornek-sonuc.json', import.meta.url), { cache: 'no-store' });
     if (yanit.ok) {
       ilk.sonuc = await yanit.json();
       ilk.sonucArac = { ...ilk.arac };

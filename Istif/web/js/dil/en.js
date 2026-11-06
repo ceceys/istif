@@ -339,7 +339,7 @@ export default {
   'plan.hata.motorHata': 'The calculation engine reported an error.',
   'plan.hata.zamanAsimi': 'The calculation took too long and was stopped.',
   'plan.hata.gecersizSonuc': 'The calculation engine returned an unexpected result.',
-  'plan.hata.ornekYok': 'The example result file could not be opened (arayuz-ornek/ornek-sonuc.json).',
+  'plan.hata.ornekYok': 'The example result file could not be opened (testler/ornek-sonuc.json).',
   'plan.degisiklik.baslik': 'Unsaved changes',
   'plan.degisiklik.metin': 'Changes to the open plan have not been saved. They will be lost if you continue.',
   'plan.degisiklik.devam': 'Continue without saving',
