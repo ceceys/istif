@@ -14,7 +14,9 @@ import {
 import { ornekPlanVerisi, katalogYukle, katalogBilgisi } from './veri.js';
 import { temaAyarla } from './tema.js';
 import { ekranKaydet, git, aktifEkran, hashtenEkran } from './yonlendirici.js';
-import { yeniPlan, ornekAc, planAc, kaydet, kapatmaIstegi, guncellemeSor, acilanPlaniYukle } from './eylemler.js';
+import {
+  yeniPlan, ornekAc, planAc, kaydet, kapatmaIstegi, guncellemeSor, acilanPlaniYukle, degisiklikleriSor,
+} from './eylemler.js';
 import { taslakBaslat, taslakSor, yenidenYuklemedenDon } from './taslak.js';
 import { planlarEkraniKur } from './ekranlar/planlar.js';
 import { planEkraniKur } from './ekranlar/plan.js';
@@ -118,7 +120,7 @@ function gezinmeKlavye(nav) {
   });
 }
 
-/** .istif dosyası pencereye bırakılınca açılır. */
+/** .istif dosyası pencereye bırakılınca açılır; Aç düğmesi gibi önce kaydedilmemiş değişiklik sorulur. */
 function birakmaKur() {
   document.addEventListener('dragover', (e) => {
     if (e.dataTransfer && [...e.dataTransfer.types].includes('Files')) e.preventDefault();
@@ -128,6 +130,7 @@ function birakmaKur() {
     if (!dosya) return;
     e.preventDefault();
     if (!dosya.name.toLowerCase().endsWith(URUN.uzanti)) return;
+    if (!(await degisiklikleriSor())) return;
     try {
       acilanPlaniYukle({ yol: null, json: await dosya.text() });
     } catch (h) {

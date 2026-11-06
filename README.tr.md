@@ -30,7 +30,7 @@
 
 - **Her araç**: Tır, kamyon ya da konteynerin ölçüsünü yazın ya da yerleşik katalogdan konteyner, dorse, panelvan ve vagon seçin. Katalogdaki her kaydın kaynağı görünür.
 - **Parça başına kural**: Üstüne konamaz, yalnız zemin, üst yük sınırı (kg), yön kilidi (serbest / dik / sabit) ve teslimat sırası.
-- **Açık planlama sırası**: Önce en az araç, sonra en kısa kullanılan boy, sonra dengeli ağırlık. Aynı girdi her zaman aynı planı verir.
+- **Açık planlama sırası**: Önce en az araç, sonra en kısa kullanılan boy, sonra dengeli ağırlık. Aynı girdi aynı planı verir.
 - **Karışık filo**: Tır dolunca kalan yük daha küçük bir araca gidebilir. Kapı payı ve aks dengesi için "kısa yükü ortala".
 - **3B görünüm**: Parçalar yükleme sırasıyla adım adım yerine iner. Yakınlaştırma, parçaya odaklanma, yan / üst / arka görünüm, tam ekran, PNG kaydetme.
 - **Elle düzenleme**: Bir ya da birden çok parçayı seçin, sürükleyin, çevirin (R / T / Y), duvara yaslayın. İstif her hareketi anında denetler: çakışma, taşma, havada kalma ve istif kuralları kırmızı yanar.
@@ -53,7 +53,7 @@
 
 Kurulumsuz seçenek: [Istif.exe](https://github.com/ceceys/istif/releases/latest/download/Istif.exe), tek dosya. Bütün sürümler [Releases](https://github.com/ceceys/istif/releases) sayfasında.
 
-Program kod imzalı olmadığı için Windows SmartScreen uyarısı verebilir: "Ek bilgi", ardından "Yine de çalıştır" seçin.
+Program kod imzalı olmadığı için Windows SmartScreen uyarı verebilir: uyarı penceresinde ek bilgi bağlantısına, ardından çıkan çalıştırma düğmesine tıklayın.
 
 ## İlk kullanım
 

@@ -30,7 +30,7 @@ At work, a truck load was being planned. The load was agricultural machinery, an
 
 - **Any vehicle**: type in the size of your truck, lorry or container, or pick one from the built-in catalogue of containers, semi-trailers, panel vans and wagons. Every catalogue entry shows its source.
 - **Rules per item**: can't stack on top, floor only, top load limit (kg), rotation lock (free / upright / fixed) and delivery order.
-- **Clear planning order**: first the fewest vehicles, then the shortest length used, then balanced weight. The same input always gives the same plan.
+- **Clear planning order**: first the fewest vehicles, then the shortest length used, then balanced weight. The same input gives the same plan.
 - **Mixed fleet**: when the truck is full, the rest of the load can go to a smaller vehicle. Door allowance and "centre a short load" for axle balance.
 - **3D view**: pieces drop into place in loading order, step by step. Zoom, focus, side / top / rear views, full screen, PNG export.
 - **Edit by hand**: select one or more pieces, drag them, rotate them (R / T / Y), push them against a wall. İstif checks every move at once: collisions, overhang, unsupported pieces and stacking rules turn red.

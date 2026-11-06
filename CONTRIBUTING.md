@@ -17,7 +17,7 @@ Security problems should be reported privately through [Security → Report a vu
 
 ## Translations
 
-The interface has room for 12 languages: tr, en, de, fr, es, it, pt, ru, ar, zh, ja, ko. Turkish (the source) and English are complete. A language without its own files falls back to English, and a missing key falls back to English, then Turkish.
+The interface is translated into 12 languages: tr, en, de, fr, es, it, pt, ru, ar, zh, ja, ko. Turkish is the source. Apart from Turkish and English, the translations have not yet been reviewed by native speakers, so corrections are very welcome. A missing key falls back to English, then Turkish.
 
 All files are flat key-value lists. Keep the keys, translate only the text:
 
